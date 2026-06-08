@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reserveNavBtn = document.getElementById('reserveNavBtn');
     const preorderBtns = document.querySelectorAll('.preorder-btn');
 
-    // ========== SCROLL TO MODELS ==========
+    // Scroll to Models
     if (exploreModelsBtn) {
         exploreModelsBtn.addEventListener('click', () => {
             const modelsSection = document.getElementById('models');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== RESERVE NAV BUTTON - Scroll to contact ==========
+    // Reserve Nav Button - Scroll to contact
     if (reserveNavBtn) {
         reserveNavBtn.addEventListener('click', () => {
             const contactSection = document.getElementById('contact');
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== PRE-ORDER BUTTONS ==========
+    // Pre-order Buttons
     preorderBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const modelName = btn.getAttribute('data-model');
@@ -55,13 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ========== QR SIMULATION ==========
+    // QR Simulation
     function simulateQRScan() {
         if (qrFeedback) {
             qrFeedback.style.display = 'block';
             qrFeedback.innerHTML = '✓ Model Ferrari SF-23 successfully bound! Dashboard unlocked: live lap times (1:14.165) + P3 finish at Monaco GP. Full race history now available.';
             
-            // Auto-hide after 6 seconds
             setTimeout(() => {
                 if (qrFeedback) qrFeedback.style.opacity = '0';
                 setTimeout(() => {
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== WAITLIST FORM ==========
+    // Waitlist Form
     if (waitlistForm) {
         waitlistForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== MOBILE MENU TOGGLE ==========
+    // Mobile Menu Toggle
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             if (navLinks.style.display === 'flex') {
