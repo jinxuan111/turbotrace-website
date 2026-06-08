@@ -21,11 +21,11 @@
         </div>
         <div class="nav-links" id="navLinks">
             <a href="#product">Product</a>
+            <a href="#models">Models</a>
             <a href="#dashboard">Dashboard</a>
-            <a href="#pricing">Pricing</a>
             <a href="#contact">Reserve</a>
         </div>
-        <button class="cta-nav" id="openSubscribeBtn">Reserve Now <i class="fas fa-arrow-right"></i></button>
+        <button class="cta-nav" id="reserveNavBtn">Reserve Now <i class="fas fa-arrow-right"></i></button>
         <div class="hamburger" id="hamburger">
             <i class="fas fa-bars"></i>
         </div>
@@ -39,13 +39,13 @@
         <h1>Your Diecast Model<br>That Tells Race Stories</h1>
         <p>Every TurboTrace model contains a dynamic QR code that unlocks a personal dashboard — real-time lap times, race rankings, and market value trends. Physical collectibles x live race data.</p>
         <div class="hero-buttons">
-            <button class="btn-primary" id="heroSubscribeBtn">Explore Subscription</button>
-            <button class="btn-secondary" id="demoQrBtn">Try QR Demo →</button>
+            <button class="btn-primary" id="exploreModelsBtn">Explore Models →</button>
+            <button class="btn-secondary" id="demoQrBtn">Try QR Demo ↓</button>
         </div>
         <div class="hero-stats">
             <div><strong>50,000+</strong><br>Collectors in MY+SG</div>
             <div><strong>+35%</strong><br>F1 Viewership Growth</div>
-            <div><strong>12-18 mo.</strong><br>Projected Break-even</div>
+            <div><strong>12+ Models</strong><br>Launch Collection</div>
         </div>
     </div>
     <div class="hero-image">
@@ -59,7 +59,7 @@
     </div>
 </section>
 
-<!-- Product Features (5 Unique Advantages from Business Plan) -->
+<!-- Product Features (5 Unique Advantages) -->
 <section class="product" id="product">
     <div class="container">
         <div class="section-title">
@@ -83,14 +83,230 @@
                 <p>Track estimated collection value based on community trading data.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-crown"></i>
-                <h3>Premium Analytics</h3>
-                <p>Historical comparisons, depreciation analysis, and personalized alerts — only RM 15/month.</p>
+                <i class="fas fa-chart-simple"></i>
+                <h3>Race Data Analytics</h3>
+                <p>Historical comparisons, lap time analysis, and performance trends for every model.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-globe-asia"></i>
                 <h3>Built for SEA Motorsport Fans</h3>
                 <p>Designed for Malaysia & Singapore collectors, expanding to Thailand, Indonesia, Philippines.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODELS GALLERY SECTION - NEW (Replaces Pricing) -->
+<section class="models" id="models">
+    <div class="container">
+        <div class="section-title">
+            <h2>Launch Collection</h2>
+            <p>Each model includes a unique QR code and lifetime access to its digital dashboard</p>
+        </div>
+        <div class="models-grid">
+            
+            <!-- Model 1: Ferrari SF-23 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <i class="fas fa-car-side"></i>
+                    <span class="model-team ferrari">Scuderia Ferrari</span>
+                </div>
+                <div class="model-info">
+                    <h3>Ferrari SF-23</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> C. Leclerc · C. Sainz</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-tachometer-alt"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 5 Podiums</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race</span>
+                            <span class="data-value">P3 (Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap</span>
+                            <span class="data-value">1:14.165</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 229</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 89</span>
+                        <button class="preorder-btn" data-model="Ferrari SF-23">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 2: Red Bull RB19 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <i class="fas fa-car-side"></i>
+                    <span class="model-team redbull">Oracle Red Bull Racing</span>
+                </div>
+                <div class="model-info">
+                    <h3>Red Bull RB19</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> M. Verstappen · S. Pérez</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-tachometer-alt"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 21 Wins</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race</span>
+                            <span class="data-value">P1 (Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap</span>
+                            <span class="data-value">1:12.945</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 249</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 99</span>
+                        <button class="preorder-btn" data-model="Red Bull RB19">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 3: Mercedes W14 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <i class="fas fa-car-side"></i>
+                    <span class="model-team mercedes">Mercedes-AMG</span>
+                </div>
+                <div class="model-info">
+                    <h3>Mercedes W14</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> L. Hamilton · G. Russell</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-tachometer-alt"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 8 Podiums</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race</span>
+                            <span class="data-value">P2 (Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap</span>
+                            <span class="data-value">1:13.882</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 219</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 89</span>
+                        <button class="preorder-btn" data-model="Mercedes W14">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 4: McLaren MCL60 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <i class="fas fa-car-side"></i>
+                    <span class="model-team mclaren">McLaren F1</span>
+                </div>
+                <div class="model-info">
+                    <h3>McLaren MCL60</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> L. Norris · O. Piastri</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-tachometer-alt"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 9 Podiums</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race</span>
+                            <span class="data-value">P4 (Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap</span>
+                            <span class="data-value">1:13.672</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 209</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 79</span>
+                        <button class="preorder-btn" data-model="McLaren MCL60">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 5: Aston Martin AMR23 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <i class="fas fa-car-side"></i>
+                    <span class="model-team aston">Aston Martin</span>
+                </div>
+                <div class="model-info">
+                    <h3>Aston Martin AMR23</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> F. Alonso · L. Stroll</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-tachometer-alt"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 8 Podiums</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race</span>
+                            <span class="data-value">P5 (Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap</span>
+                            <span class="data-value">1:14.213</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 199</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 79</span>
+                        <button class="preorder-btn" data-model="Aston Martin AMR23">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 6: Alpine A523 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <i class="fas fa-car-side"></i>
+                    <span class="model-team alpine">Alpine F1</span>
+                </div>
+                <div class="model-info">
+                    <h3>Alpine A523</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> P. Gasly · E. Ocon</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-tachometer-alt"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 2 Podiums</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race</span>
+                            <span class="data-value">P7 (Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap</span>
+                            <span class="data-value">1:14.856</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 169</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 69</span>
+                        <button class="preorder-btn" data-model="Alpine A523">Pre-Order →</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -106,7 +322,7 @@
         <div class="dashboard-card">
             <div class="dash-header">
                 <div><i class="fas fa-car"></i> Ferrari SF-23 Model #0447</div>
-                <div><span class="tag">Premium Active</span></div>
+                <div><span class="tag">QR Bound ✓</span></div>
             </div>
             <div class="dash-stats">
                 <div class="stat">
@@ -123,7 +339,7 @@
                 </div>
             </div>
             <div class="premium-badge">
-                <i class="fas fa-lock-open"></i> Premium Features: Historical comparison + lap time degradation reports
+                <i class="fas fa-chart-line"></i> Full Race History: Qualifying · Race Pace · Tyre Strategy
             </div>
         </div>
         <div class="qr-simulator">
@@ -134,55 +350,12 @@
     </div>
 </section>
 
-<!-- Pricing Section (Matches Marketing Strategy) -->
-<section class="pricing" id="pricing">
-    <div class="container">
-        <div class="section-title">
-            <h2>Pricing Plans for Collectors</h2>
-            <p>All users can bind up to 3 models for free. Premium unlocks deep data insights.</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="plan">
-                <h3>Basic</h3>
-                <div class="price">Free</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Bind up to 3 models</li>
-                    <li><i class="fas fa-check"></i> Live lap times & rankings</li>
-                    <li><i class="fas fa-check"></i> Basic market value</li>
-                    <li class="muted"><i class="fas fa-times"></i> Historical comparison</li>
-                    <li class="muted"><i class="fas fa-times"></i> Alerts & reports</li>
-                </ul>
-            </div>
-            <div class="plan popular">
-                <div class="popular-tag">Most Popular</div>
-                <h3>Premium</h3>
-                <div class="price">RM 15 <span>/ month</span></div>
-                <div class="price-annual">or RM 150 / year (save 2 months)</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Unlimited model binding</li>
-                    <li><i class="fas fa-check"></i> Historical lap comparison + trend charts</li>
-                    <li><i class="fas fa-check"></i> Price drop / value increase alerts</li>
-                    <li><i class="fas fa-check"></i> Exclusive race reports (PDF)</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
-                </ul>
-                <button class="btn-primary subscribe-now">Subscribe Now</button>
-            </div>
-            <div class="plan">
-                <h3>Collector's Club</h3>
-                <div class="price">Custom</div>
-                <p style="margin-top: 16px;">For hobby shops and collector communities. Bulk activation of premium features.</p>
-                <button class="btn-secondary" id="contactSales">Contact Sales</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Waitlist / Pre-order Section (Matches Promotion Strategy) -->
+<!-- Waitlist / Pre-order Section -->
 <section class="contact" id="contact">
     <div class="container">
         <div class="contact-card">
             <h3>Get Early Access</h3>
-            <p>First 500 units + 3 months free Premium subscription (only for first 100 reservations)</p>
+            <p>First 500 units get exclusive launch pricing + free QR dashboard access</p>
             <form id="waitlistForm">
                 <input type="email" placeholder="Your email address" id="waitlistEmail" required>
                 <button type="submit">Reserve Now →</button>
@@ -200,8 +373,8 @@
         </div>
         <div class="footer-links">
             <a href="#product">Product</a>
+            <a href="#models">Models</a>
             <a href="#dashboard">Dashboard</a>
-            <a href="#pricing">Pricing</a>
         </div>
         <div class="footer-contact">
             <p><i class="fas fa-envelope"></i> hello@turbotrace.my</p>
@@ -212,19 +385,6 @@
         <p>© 2025 TurboTrace · Registering with SSM Malaysia | Data via OpenF1 + Ergast APIs</p>
     </div>
 </footer>
-
-<!-- Subscription Modal -->
-<div id="subscribeModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>Choose TurboTrace Premium</h3>
-        <p>RM 15/month unlocks all analytics + alerts. First 100 model buyers get 3 months free.</p>
-        <div class="modal-buttons">
-            <button class="btn-primary" id="confirmSubscribe">Monthly · RM 15</button>
-            <button class="btn-secondary" id="cancelModal">Maybe later</button>
-        </div>
-    </div>
-</div>
 
 <script src="script.js"></script>
 </body>

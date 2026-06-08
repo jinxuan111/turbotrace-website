@@ -1,70 +1,74 @@
-// TurboTrace Website - Interactive Features
-// Matches Marketing & R&D sections from Business Plan
+// TurboTrace Website - No Subscription Version
+// Features: Model showcase, QR simulation, waitlist form
 
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const modal = document.getElementById('subscribeModal');
-    const openBtns = document.querySelectorAll('#openSubscribeBtn, #heroSubscribeBtn, .subscribe-now');
-    const closeModalBtn = document.querySelector('.close-modal');
-    const cancelModalBtn = document.getElementById('cancelModal');
-    const confirmSubBtn = document.getElementById('confirmSubscribe');
     const simulateScan = document.getElementById('simulateScanBtn');
     const qrFeedback = document.getElementById('qrFeedback');
     const demoQrBtn = document.getElementById('demoQrBtn');
+    const exploreModelsBtn = document.getElementById('exploreModelsBtn');
     const waitlistForm = document.getElementById('waitlistForm');
     const formMsg = document.getElementById('formMsg');
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    const contactSales = document.getElementById('contactSales');
+    const reserveNavBtn = document.getElementById('reserveNavBtn');
+    const preorderBtns = document.querySelectorAll('.preorder-btn');
 
-    // ========== SUBSCRIPTION MODAL ==========
-    function openModal() {
-        if (modal) modal.style.display = 'flex';
-    }
-    
-    function closeModal() {
-        if (modal) modal.style.display = 'none';
-    }
-    
-    openBtns.forEach(btn => {
-        if (btn) btn.addEventListener('click', openModal);
-    });
-    
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-    if (cancelModalBtn) cancelModalBtn.addEventListener('click', closeModal);
-    
-    window.addEventListener('click', (e) => {
-        if (modal && e.target === modal) closeModal();
-    });
-    
-    if (confirmSubBtn) {
-        confirmSubBtn.addEventListener('click', () => {
-            alert('✓ Premium subscription activated! RM 15/month. First 100 buyers get 3 months free.');
-            closeModal();
+    // ========== SCROLL TO MODELS ==========
+    if (exploreModelsBtn) {
+        exploreModelsBtn.addEventListener('click', () => {
+            const modelsSection = document.getElementById('models');
+            if (modelsSection) {
+                modelsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 
-    // ========== QR SIMULATION (Matches R&D Section) ==========
+    // ========== RESERVE NAV BUTTON - Scroll to contact ==========
+    if (reserveNavBtn) {
+        reserveNavBtn.addEventListener('click', () => {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // ========== PRE-ORDER BUTTONS ==========
+    preorderBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const modelName = btn.getAttribute('data-model');
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                if (formMsg) {
+                    formMsg.innerHTML = `✨ Interested in ${modelName}! Fill in your email to reserve.`;
+                    formMsg.style.color = '#e11d48';
+                    formMsg.style.fontWeight = '500';
+                    setTimeout(() => {
+                        if (formMsg && formMsg.innerHTML.includes('Interested')) {
+                            formMsg.innerHTML = '';
+                        }
+                    }, 3000);
+                }
+            }
+        });
+    });
+
+    // ========== QR SIMULATION ==========
     function simulateQRScan() {
         if (qrFeedback) {
             qrFeedback.style.display = 'block';
-            qrFeedback.innerHTML = '✓ Model SF-23 (Ferrari) successfully bound! Dashboard unlocked: live lap times + P3 finish. <a href="#" id="upgradeHint" style="color:#f97316; text-decoration:underline;">Upgrade to Premium for full history →</a>';
+            qrFeedback.innerHTML = '✓ Model Ferrari SF-23 successfully bound! Dashboard unlocked: live lap times (1:14.165) + P3 finish at Monaco GP. Full race history now available.';
             
-            const upgradeHint = document.getElementById('upgradeHint');
-            if (upgradeHint) {
-                upgradeHint.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openModal();
-                });
-            }
-            
-            // Auto-hide after 8 seconds
+            // Auto-hide after 6 seconds
             setTimeout(() => {
                 if (qrFeedback) qrFeedback.style.opacity = '0';
                 setTimeout(() => {
                     if (qrFeedback) qrFeedback.style.display = 'none';
+                    if (qrFeedback) qrFeedback.style.opacity = '1';
                 }, 500);
-            }, 8000);
+            }, 6000);
         }
     }
     
@@ -82,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== WAITLIST FORM (Matches Marketing Promotion) ==========
+    // ========== WAITLIST FORM ==========
     if (waitlistForm) {
         waitlistForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -90,12 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (email && email.includes('@')) {
                 if (formMsg) {
-                    formMsg.innerHTML = '✓ Reserved successfully! We\'ll notify you at launch with an exclusive promo code.';
+                    formMsg.innerHTML = '✓ Reserved successfully! We\'ll notify you at launch with exclusive pricing.';
                     formMsg.style.color = '#10b981';
                     formMsg.style.fontWeight = '500';
                     waitlistForm.reset();
                 }
-                // In production, send to Google Sheets, Mailchimp, or your backend
                 console.log('Waitlist email saved:', email);
             } else {
                 if (formMsg) {
@@ -138,11 +141,4 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.style.boxShadow = '';
         }
     });
-
-    // ========== CONTACT SALES BUTTON ==========
-    if (contactSales) {
-        contactSales.addEventListener('click', () => {
-            alert('📧 Email us at partners@turbotrace.my or call +6012-345 6789 (Attn: Yee Chao Tong, Operations)');
-        });
-    }
 });
