@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TurboTrace Dashboard | Live Race Data & Model Details</title>
+    <meta name="description" content="Your personal dashboard for TurboTrace diecast models. Live race data, historical comparisons, and market values.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>TurboTrace</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html#product">Product</a>
+            <a href="index.html#models">Models</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html#contact">Reserve</a>
+        </div>
+        <button class="cta-nav" id="homeBtn">← Back to Shop</button>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<!-- Dashboard Hero - Shows which model is bound -->
+<section class="dashboard-hero">
+    <div class="container">
+        <div class="qr-bound-badge">
+            <i class="fas fa-qrcode"></i> 
+            <span>Model Successfully Bound!</span>
+            <span class="badge-id">ID: TRB-MCL60-0447</span>
+        </div>
+        <h1>McLaren MCL60 · Digital Dashboard</h1>
+        <p>Live data from the 2023 Formula 1 season | Powered by OpenF1 API</p>
+    </div>
+</section>
+
+<!-- Main Dashboard Content -->
+<section class="dashboard-main">
+    <div class="container">
+        <div class="dashboard-grid">
+            
+            <!-- Left Column: Model Info & QR -->
+            <div class="dashboard-card-large">
+                <div class="model-header">
+                    <div class="model-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <div class="model-title">
+                        <h2>McLaren MCL60</h2>
+                        <p>2023 Formula 1 World Championship</p>
+                    </div>
+                </div>
+                <div class="model-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Chassis</span>
+                        <span class="detail-value">Carbon-fibre monocoque</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Engine</span>
+                        <span class="detail-value">Mercedes-AMG M14 E Performance</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Power Unit</span>
+                        <span class="detail-value">1.6L V6 turbo hybrid</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Weight</span>
+                        <span class="detail-value">798 kg (including driver)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Top Speed</span>
+                        <span class="detail-value">~350 km/h</span>
+                    </div>
+                </div>
+                <div class="qr-code-display">
+                    <i class="fas fa-qrcode"></i>
+                    <div class="qr-text">
+                        <strong>Your Model QR Code</strong>
+                        <span>Scanned on: June 8, 2025</span>
+                        <span>Model #: TRB-MCL60-0447</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Live Race Data -->
+            <div class="dashboard-card-large">
+                <div class="live-data-header">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>Live Data | Last Updated: 10 seconds ago</span>
+                    <button id="refreshDataBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+                <div class="race-data">
+                    <h3>🇲🇨 Monaco Grand Prix · May 26, 2025</h3>
+                    <div class="race-results">
+                        <div class="result-item">
+                            <span class="position">P4</span>
+                            <span class="driver">Lando Norris</span>
+                            <span class="time">+18.482s</span>
+                            <span class="points">+12 pts</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="position">P8</span>
+                            <span class="driver">Oscar Piastri</span>
+                            <span class="time">+32.156s</span>
+                            <span class="points">+4 pts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fastest-laps">
+                    <h3><i class="fas fa-tachometer-alt"></i> Fastest Laps</h3>
+                    <div class="lap-item">
+                        <span>Norris Best Lap</span>
+                        <span class="lap-time">1:13.672 (Lap 48)</span>
+                    </div>
+                    <div class="lap-item">
+                        <span>Piastri Best Lap</span>
+                        <span class="lap-time">1:14.201 (Lap 52)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Season Stats -->
+            <div class="dashboard-card-full">
+                <h3><i class="fas fa-chart-line"></i> 2023 Season Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Championship Position</span>
+                        <span class="stat-value">6th (WCC)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Total Points</span>
+                        <span class="stat-value">302 pts</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Podiums</span>
+                        <span class="stat-value">9</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Pole Positions</span>
+                        <span class="stat-value">2</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Fastest Laps</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Best Finish</span>
+                        <span class="stat-value">P2 (Norris, Qatar)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Driver Comparison -->
+            <div class="dashboard-card-full">
+                <h3><i class="fas fa-helmet-safety"></i> Driver Head-to-Head</h3>
+                <div class="driver-comparison">
+                    <div class="driver-card">
+                        <div class="driver-name">Lando Norris</div>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <span>Points</span>
+                                <strong>205</strong>
+                            </div>
+                            <div class="driver-stat">
+                                <span>Best Finish</span>
+                                <strong>P2</strong>
+                            </div>
+                            <div class="driver-stat">
+                                <span>Qualifying H2H</span>
+                                <strong>15 - 7</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="driver-card">
+                        <div class="driver-name">Oscar Piastri</div>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <span>Points</span>
+                                <strong>97</strong>
+                            </div>
+                            <div class="driver-stat">
+                                <span>Best Finish</span>
+                                <strong>P3</strong>
+                            </div>
+                            <div class="driver-stat">
+                                <span>Qualifying H2H</span>
+                                <strong>7 - 15</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Race Results -->
+            <div class="dashboard-card-full">
+                <h3><i class="fas fa-history"></i> Last 5 Race Results</h3>
+                <div class="race-history">
+                    <table class="race-table">
+                        <thead>
+                            <tr><th>Grand Prix</th><th>Norris</th><th>Piastri</th><th>Team Points</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Abu Dhabi</td><td>P5</td><td>P6</td><td>18</td></tr>
+                            <tr><td>Las Vegas</td><td>P3</td><td>P10</td><td>17</td></tr>
+                            <tr><td>Brazil</td><td>P2</td><td>P7</td><td>24</td></tr>
+                            <tr><td>Mexico</td><td>P5</td><td>P9</td><td>12</td></tr>
+                            <tr><td>USA</td><td>P3</td><td>P8</td><td>19</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Market Value Chart -->
+            <div class="dashboard-card-full">
+                <h3><i class="fas fa-chart-line"></i> Market Value Trend</h3>
+                <div class="market-chart">
+                    <div class="chart-bars">
+                        <div class="chart-bar" style="height: 60px;"><span>Jan</span><span>RM 149</span></div>
+                        <div class="chart-bar" style="height: 72px;"><span>Feb</span><span>RM 169</span></div>
+                        <div class="chart-bar" style="height: 85px;"><span>Mar</span><span>RM 189</span></div>
+                        <div class="chart-bar" style="height: 78px;"><span>Apr</span><span>RM 179</span></div>
+                        <div class="chart-bar" style="height: 92px;"><span>May</span><span>RM 199</span></div>
+                        <div class="chart-bar" style="height: 98px;"><span>Jun</span><span>RM 209</span></div>
+                    </div>
+                    <p class="chart-note">↑ 12% increase in past 30 days | Projected value: RM 229 by year end</p>
+                </div>
+            </div>
+
+            <!-- Call to Action - Upgrade / Pre-order -->
+            <div class="dashboard-card-full cta-card">
+                <h3>Own This Model</h3>
+                <p>You are viewing the digital dashboard. Purchase the physical diecast model to bind it to your account forever.</p>
+                <button class="btn-primary" id="purchaseBtn"><i class="fas fa-shopping-cart"></i> Pre-Order McLaren MCL60 — RM 79</button>
+                <button class="btn-secondary" id="backToShopBtn">← Browse All Models</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <i class="fas fa-tachometer-alt"></i> TurboTrace
+        </div>
+        <div class="footer-links">
+            <a href="index.html#product">Product</a>
+            <a href="index.html#models">Models</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="footer-contact">
+            <p><i class="fas fa-envelope"></i> hello@turbotrace.my</p>
+            <p><i class="fab fa-instagram"></i> @turbotrace</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 TurboTrace · Registering with SSM Malaysia | Data via OpenF1 + Ergast APIs</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // Dashboard specific functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Back to home button
+        const homeBtn = document.getElementById('homeBtn');
+        if(homeBtn) {
+            homeBtn.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        }
+        
+        const backToShopBtn = document.getElementById('backToShopBtn');
+        if(backToShopBtn) {
+            backToShopBtn.addEventListener('click', function() {
+                window.location.href = 'index.html#models';
+            });
+        }
+        
+        const purchaseBtn = document.getElementById('purchaseBtn');
+        if(purchaseBtn) {
+            purchaseBtn.addEventListener('click', function() {
+                window.location.href = 'index.html#contact';
+            });
+        }
+        
+        // Refresh data simulation
+        const refreshBtn = document.getElementById('refreshDataBtn');
+        if(refreshBtn) {
+            refreshBtn.addEventListener('click', function() {
+                const originalText = refreshBtn.innerHTML;
+                refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+                setTimeout(function() {
+                    refreshBtn.innerHTML = originalText;
+                    alert('Live data refreshed! (Simulated - real API coming soon)');
+                }, 1500);
+            });
+        }
+        
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if(hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                if(navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '70px';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.background = 'white';
+                    navLinks.style.padding = '24px';
+                    navLinks.style.gap = '20px';
+                    navLinks.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
