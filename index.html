@@ -3,491 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TurboTrace Dashboard | Live Race Data & Model Details</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>TurboTrace | Live-Updating Diecast Models · Motorsport Data Dashboard</title>
+    <meta name="description" content="TurboTrace – Southeast Asia's first phygital diecast platform. Each model includes a dynamic QR code that syncs real race data and market value trends.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0a0c10;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        nav {
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(8px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 16px 0;
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: linear-gradient(135deg, #e11d48, #7c3aed);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .logo i {
-            color: #e11d48;
-            margin-right: 6px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .cta-nav {
-            background: #0f172a;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Dashboard Hero */
-        .dashboard-hero {
-            background: linear-gradient(135deg, #0f172a, #1e1b4b);
-            color: white;
-            padding: 60px 0 40px;
-            text-align: center;
-        }
-
-        .qr-bound-badge {
-            background: rgba(16, 185, 129, 0.2);
-            border: 1px solid #10b981;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 20px;
-            border-radius: 40px;
-            margin-bottom: 24px;
-            font-size: 0.85rem;
-        }
-
-        .qr-bound-badge i {
-            color: #10b981;
-        }
-
-        .badge-id {
-            background: #334155;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-family: monospace;
-        }
-
-        .dashboard-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        /* Dashboard Main */
-        .dashboard-main {
-            padding: 48px 0 80px;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 28px;
-        }
-
-        .dashboard-card-large {
-            background: white;
-            border-radius: 24px;
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-
-        .dashboard-card-full {
-            background: white;
-            border-radius: 24px;
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            grid-column: 1 / -1;
-        }
-
-        .model-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 28px;
-        }
-
-        .model-icon i {
-            font-size: 3rem;
-            color: #e11d48;
-        }
-
-        .model-title h2 {
-            font-size: 1.8rem;
-            margin-bottom: 4px;
-        }
-
-        .model-details {
-            border-top: 1px solid #e2e8f0;
-            padding-top: 20px;
-            margin-bottom: 24px;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .detail-label {
-            font-weight: 500;
-            color: #64748b;
-        }
-
-        .detail-value {
-            font-weight: 600;
-        }
-
-        .qr-code-display {
-            background: #f1f5f9;
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .qr-code-display i {
-            font-size: 3rem;
-            color: #0f172a;
-        }
-
-        .live-data-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #e2e8f0;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .live-data-header button {
-            background: #f1f5f9;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        .race-results {
-            margin: 20px 0;
-        }
-
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: #f8fafc;
-            margin-bottom: 8px;
-            border-radius: 12px;
-        }
-
-        .position {
-            font-weight: 800;
-            font-size: 1.2rem;
-            width: 50px;
-        }
-
-        .fastest-laps {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .lap-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 16px;
-            background: #f8fafc;
-            border-radius: 16px;
-        }
-
-        .stat-card .stat-label {
-            display: block;
-            font-size: 0.75rem;
-            margin-bottom: 8px;
-            color: #64748b;
-        }
-
-        .stat-card .stat-value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #e11d48;
-        }
-
-        .driver-comparison {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .driver-card {
-            flex: 1;
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 24px;
-            text-align: center;
-        }
-
-        .driver-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .driver-stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .driver-stat {
-            text-align: center;
-        }
-
-        .driver-stat span {
-            display: block;
-            font-size: 0.7rem;
-            color: #64748b;
-        }
-
-        .driver-stat strong {
-            font-size: 1.2rem;
-        }
-
-        .vs {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #e11d48;
-        }
-
-        .race-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-
-        .race-table th,
-        .race-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .race-table th {
-            background: #f8fafc;
-            font-weight: 600;
-        }
-
-        .market-chart {
-            margin-top: 20px;
-        }
-
-        .chart-bars {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-            gap: 16px;
-            padding: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .chart-bar {
-            flex: 1;
-            background: linear-gradient(to top, #e11d48, #f43f5e);
-            border-radius: 8px 8px 4px 4px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 8px 0;
-            min-height: 30px;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-align: center;
-            min-width: 60px;
-        }
-
-        .chart-note {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #10b981;
-            margin-top: 16px;
-        }
-
-        .cta-card {
-            text-align: center;
-            background: linear-gradient(135deg, #0f172a, #1e1b4b);
-            color: white;
-        }
-
-        .cta-card h3 {
-            color: white;
-        }
-
-        .cta-card p {
-            color: #94a3b8;
-            margin-bottom: 24px;
-        }
-
-        .btn-primary {
-            background: #e11d48;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 700;
-            color: white;
-            cursor: pointer;
-            margin: 0 8px;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1.5px solid #475569;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            color: white;
-        }
-
-        footer {
-            background: #0f172a;
-            color: #94a3b8;
-            padding: 48px 24px 24px;
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 32px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .footer-logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .footer-logo i {
-            color: #e11d48;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-        }
-
-        .footer-contact p {
-            margin-bottom: 8px;
-        }
-
-        .footer-contact i {
-            margin-right: 8px;
-            color: #e11d48;
-        }
-
-        .footer-bottom {
-            max-width: 1280px;
-            margin: 24px auto 0;
-            text-align: center;
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links, .cta-nav { display: none; }
-            .hamburger { display: block; }
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .dashboard-hero h1 { font-size: 1.6rem; }
-            .driver-comparison { flex-direction: column; }
-            .vs { transform: rotate(90deg); }
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
 </head>
 <body>
 
+<!-- Navigation -->
 <nav>
     <div class="nav-container">
         <div class="logo">
@@ -495,178 +20,402 @@
             <span>TurboTrace</span>
         </div>
         <div class="nav-links" id="navLinks">
-            <a href="index.html#product">Product</a>
-            <a href="index.html#models">Models</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="#product">Product</a>
+            <a href="#models">Models</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#contact">Reserve</a>
         </div>
-        <button class="cta-nav" id="homeBtn">← Back to Shop</button>
+        <button class="cta-nav" id="reserveNavBtn">Reserve Now <i class="fas fa-arrow-right"></i></button>
         <div class="hamburger" id="hamburger">
             <i class="fas fa-bars"></i>
         </div>
     </div>
 </nav>
 
-<section class="dashboard-hero">
-    <div class="container">
-        <div class="qr-bound-badge">
-            <i class="fas fa-qrcode"></i> 
-            <span>Model Successfully Bound!</span>
-            <span class="badge-id">ID: TRB-MCL60-0447</span>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <span class="badge"><i class="fas fa-microchip"></i> Phygital · Launching Malaysia</span>
+        <h1>Your Diecast Model<br>That Tells Race Stories</h1>
+        <p>Every TurboTrace model contains a dynamic QR code that unlocks a personal dashboard — real-time lap times, race rankings, and market value trends. Physical collectibles x live race data.</p>
+        <div class="hero-buttons">
+            <button class="btn-primary" id="exploreModelsBtn">Explore Models →</button>
+            <button class="btn-secondary" id="demoQrBtn">Try QR Demo ↓</button>
         </div>
-        <h1>McLaren MCL60 · Digital Dashboard</h1>
-        <p>Live data from the 2023 Formula 1 season | Powered by OpenF1 API</p>
+        <div class="hero-stats">
+            <div><strong>50,000+</strong><br>Collectors in MY+SG</div>
+            <div><strong>+35%</strong><br>F1 Viewership Growth</div>
+            <div><strong>12+ Models</strong><br>Launch Collection</div>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="card-glow">
+            <i class="fas fa-qrcode"></i>
+            <div class="mini-dash">
+                <span>🏁 Spanish GP Lap</span>
+                <span>1:23.45 — P5</span>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="dashboard-main">
+<!-- Product Features -->
+<section class="product" id="product">
     <div class="container">
-        <div class="dashboard-grid">
+        <div class="section-title">
+            <h2>More Than a Model. A Data Portal.</h2>
+            <p>Five unique advantages that redefine diecast collecting</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Real-Time Data Sync</h3>
+                <p>Live race lap times, rankings, and championship points update automatically to your dashboard.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-qrcode"></i>
+                <h3>QR Anti-Counterfeit + Binding</h3>
+                <p>Each model has a unique dynamic QR code — prevents fakes while activating digital ownership.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Market Value Trends</h3>
+                <p>Track estimated collection value based on community trading data.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-simple"></i>
+                <h3>Race Data Analytics</h3>
+                <p>Historical comparisons, lap time analysis, and performance trends for every model.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-globe-asia"></i>
+                <h3>Built for SEA Motorsport Fans</h3>
+                <p>Designed for Malaysia & Singapore collectors, expanding to Thailand, Indonesia, Philippines.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODELS GALLERY - WITH REALISTIC CAR IMAGES AND FULL DATA -->
+<section class="models" id="models">
+    <div class="container">
+        <div class="section-title">
+            <h2>Launch Collection</h2>
+            <p>Each model includes a unique QR code and lifetime access to its digital dashboard</p>
+        </div>
+        <div class="models-grid">
             
-            <div class="dashboard-card-large">
-                <div class="model-header">
-                    <div class="model-icon">
-                        <i class="fas fa-car-side"></i>
+            <!-- Model 1: Ferrari SF-23 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="https://www.amalgamcollection.com/cdn/shop/files/DSCF5220_2ac22c57-58e9-496c-bef0-b62b397b2f7c_grande.jpg?v=1767615783" alt="Ferrari SF-23 Diecast Model">
+                    <span class="model-team ferrari">Scuderia Ferrari</span>
+                </div>
+                <div class="model-info">
+                    <h3>Ferrari SF-23</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Charles Leclerc · Carlos Sainz</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-calendar"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 5 Podiums</span>
+                        <span><i class="fas fa-flag-checkered"></i> 3 Fastest Laps</span>
                     </div>
-                    <div class="model-title">
-                        <h2>McLaren MCL60</h2>
-                        <p>2023 Formula 1 World Championship</p>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Leclerc: P3 | Sainz: P6</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:14.165 (Leclerc, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 229 <span style="color:#10b981;">↑12%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Leclerc: 206 | Sainz: 200</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 89</span>
+                        <button class="preorder-btn" data-model="Ferrari SF-23">Pre-Order →</button>
                     </div>
                 </div>
-                <div class="model-details">
-                    <div class="detail-row"><span class="detail-label">Chassis</span><span class="detail-value">Carbon-fibre monocoque</span></div>
-                    <div class="detail-row"><span class="detail-label">Engine</span><span class="detail-value">Mercedes-AMG M14 E Performance</span></div>
-                    <div class="detail-row"><span class="detail-label">Power Unit</span><span class="detail-value">1.6L V6 turbo hybrid</span></div>
-                    <div class="detail-row"><span class="detail-label">Weight</span><span class="detail-value">798 kg (including driver)</span></div>
-                    <div class="detail-row"><span class="detail-label">Top Speed</span><span class="detail-value">~350 km/h</span></div>
+            </div>
+
+            <!-- Model 2: Red Bull RB19 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6endpjol3tWlcyIjLdBcUPnwzyTFHwIaIDg&s" alt="Red Bull RB19 Diecast Model">
+                    <span class="model-team redbull">Oracle Red Bull Racing</span>
                 </div>
-                <div class="qr-code-display">
-                    <i class="fas fa-qrcode"></i>
-                    <div>
-                        <strong>Your Model QR Code</strong><br>
-                        Scanned on: June 8, 2025<br>
-                        Model #: TRB-MCL60-0447
+                <div class="model-info">
+                    <h3>Red Bull RB19</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Max Verstappen · Sergio Pérez</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-calendar"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 21 Wins</span>
+                        <span><i class="fas fa-tachometer-alt"></i> Most Dominant Car</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Verstappen: P1 | Pérez: P16</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:12.945 (Verstappen, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 249 <span style="color:#10b981;">↑18%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Verstappen: 575 | Pérez: 285</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 99</span>
+                        <button class="preorder-btn" data-model="Red Bull RB19">Pre-Order →</button>
                     </div>
                 </div>
             </div>
 
-            <div class="dashboard-card-large">
-                <div class="live-data-header">
-                    <i class="fas fa-satellite-dish"></i>
-                    <span>Live Data | Last Updated: 10 seconds ago</span>
-                    <button id="refreshDataBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+            <!-- Model 3: Mercedes W14 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="https://cdn-5.motorsport.com/images/amp/YMdyjMg2/s6/mercedes-w14-1.jpg" alt="Mercedes W14 Diecast Model">
+                    <span class="model-team mercedes">Mercedes-AMG</span>
                 </div>
-                <div class="race-results">
-                    <h3>🇲🇨 Monaco Grand Prix · May 26, 2025</h3>
-                    <div class="result-item"><span class="position">P4</span><span>Lando Norris</span><span>+18.482s</span><span>+12 pts</span></div>
-                    <div class="result-item"><span class="position">P8</span><span>Oscar Piastri</span><span>+32.156s</span><span>+4 pts</span></div>
-                </div>
-                <div class="fastest-laps">
-                    <h3><i class="fas fa-tachometer-alt"></i> Fastest Laps</h3>
-                    <div class="lap-item"><span>Norris Best Lap</span><span class="lap-time">1:13.672 (Lap 48)</span></div>
-                    <div class="lap-item"><span>Piastri Best Lap</span><span class="lap-time">1:14.201 (Lap 52)</span></div>
-                </div>
-            </div>
-
-            <div class="dashboard-card-full">
-                <h3><i class="fas fa-chart-line"></i> 2023 Season Statistics</h3>
-                <div class="stats-grid">
-                    <div class="stat-card"><span class="stat-label">Championship Position</span><span class="stat-value">6th (WCC)</span></div>
-                    <div class="stat-card"><span class="stat-label">Total Points</span><span class="stat-value">302 pts</span></div>
-                    <div class="stat-card"><span class="stat-label">Podiums</span><span class="stat-value">9</span></div>
-                    <div class="stat-card"><span class="stat-label">Pole Positions</span><span class="stat-value">2</span></div>
-                    <div class="stat-card"><span class="stat-label">Fastest Laps</span><span class="stat-value">3</span></div>
-                    <div class="stat-card"><span class="stat-label">Best Finish</span><span class="stat-value">P2 (Norris, Qatar)</span></div>
-                </div>
-            </div>
-
-            <div class="dashboard-card-full">
-                <h3><i class="fas fa-helmet-safety"></i> Driver Head-to-Head</h3>
-                <div class="driver-comparison">
-                    <div class="driver-card"><div class="driver-name">Lando Norris</div><div class="driver-stats"><div class="driver-stat"><span>Points</span><strong>205</strong></div><div class="driver-stat"><span>Best Finish</span><strong>P2</strong></div><div class="driver-stat"><span>Qualifying H2H</span><strong>15 - 7</strong></div></div></div>
-                    <div class="vs">VS</div>
-                    <div class="driver-card"><div class="driver-name">Oscar Piastri</div><div class="driver-stats"><div class="driver-stat"><span>Points</span><strong>97</strong></div><div class="driver-stat"><span>Best Finish</span><strong>P3</strong></div><div class="driver-stat"><span>Qualifying H2H</span><strong>7 - 15</strong></div></div></div>
-                </div>
-            </div>
-
-            <div class="dashboard-card-full">
-                <h3><i class="fas fa-history"></i> Last 5 Race Results</h3>
-                <table class="race-table">
-                    <thead><tr><th>Grand Prix</th><th>Norris</th><th>Piastri</th><th>Team Points</th></tr></thead>
-                    <tbody>
-                        <tr><td>Abu Dhabi</td><td>P5</td><td>P6</td><td>18</td></tr>
-                        <tr><td>Las Vegas</td><td>P3</td><td>P10</td><td>17</td></tr>
-                        <tr><td>Brazil</td><td>P2</td><td>P7</td><td>24</td></tr>
-                        <tr><td>Mexico</td><td>P5</td><td>P9</td><td>12</td></tr>
-                        <tr><td>USA</td><td>P3</td><td>P8</td><td>19</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="dashboard-card-full">
-                <h3><i class="fas fa-chart-line"></i> Market Value Trend</h3>
-                <div class="market-chart">
-                    <div class="chart-bars">
-                        <div class="chart-bar" style="height: 60px;">Jan<br>RM149</div>
-                        <div class="chart-bar" style="height: 72px;">Feb<br>RM169</div>
-                        <div class="chart-bar" style="height: 85px;">Mar<br>RM189</div>
-                        <div class="chart-bar" style="height: 78px;">Apr<br>RM179</div>
-                        <div class="chart-bar" style="height: 92px;">May<br>RM199</div>
-                        <div class="chart-bar" style="height: 98px;">Jun<br>RM209</div>
+                <div class="model-info">
+                    <h3>Mercedes W14</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Lewis Hamilton · George Russell</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-calendar"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 8 Podiums</span>
+                        <span><i class="fas fa-chart-line"></i> 2nd in WCC</span>
                     </div>
-                    <p class="chart-note">↑ 12% increase in past 30 days | Projected value: RM 229 by year end</p>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Hamilton: P2 | Russell: P10</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:13.882 (Hamilton, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 219 <span style="color:#10b981;">↑9%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Hamilton: 234 | Russell: 175</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 89</span>
+                        <button class="preorder-btn" data-model="Mercedes W14">Pre-Order →</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="dashboard-card-full cta-card">
-                <h3>Own This Model</h3>
-                <p>You are viewing the digital dashboard. Purchase the physical diecast model to bind it to your account forever.</p>
-                <button class="btn-primary" id="purchaseBtn"><i class="fas fa-shopping-cart"></i> Pre-Order McLaren MCL60 — RM 79</button>
-                <button class="btn-secondary" id="backToShopBtn">← Browse All Models</button>
+            <!-- Model 4: McLaren MCL60 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="data:image/jpeg;base64,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" alt="McLaren MCL60 Diecast Model">
+                    <span class="model-team mclaren">McLaren F1</span>
+                </div>
+                <div class="model-info">
+                    <h3>McLaren MCL60</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Lando Norris · Oscar Piastri</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-calendar"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 9 Podiums</span>
+                        <span><i class="fas fa-rocket"></i> Best Comeback</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Norris: P4 | Piastri: P8</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:13.672 (Norris, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 209 <span style="color:#10b981;">↑15%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Norris: 205 | Piastri: 97</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 79</span>
+                        <button class="preorder-btn" data-model="McLaren MCL60">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 5: Aston Martin AMR23 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgSEhITEhQVExIXFRUZFxYYFxcXGRcdGBUWFxgVFxYYIioiHRslGxcVIjEjJSksLi4uGB8zODMuNygtLisBCgoKDg0OGxAQGzcmICYyLS0tLisyLSs2NS0rLy0vLS01Mi4tLy01LSstLS0tKy0tLy4tLSstLS4tKzAuKy0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABQYDBAcIAQL/xAA9EAACAQIEAwUFBgQFBQAAAAABAgADEQQFEiEGMUETIlFhcQcygZGhFCNCYnLBQ1Kx0RZTgqKyFTODwvD/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/xAAwEQEAAQMCAgcHBQEAAAAAAAAAAQIDESExEkFRYXGhscHhIjJCgZHR8AQUIzPxE//aAAwDAQACEQMRAD8A7jERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARMb1qQ2LAbX3IG17X9LzJAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQET5ccp9gIifmpURQWYgKASSTYADcknoIH6icZ4g9rGdV6lallGGestMj79UarfcDV2YXZTva535+U0KPtN49w9VUxuGp00vZmqYeqnppbWFJJsIJnDusi+J8xy3D4WtVxRIw4W1SwYkhyEsNG9yWA25X6c5R19rACqThXq3NmFE62UWuWKgEWH6ucxZrx3wtm2BxeHL1cPqSzGpSPcYG6k6Cb2ZQbCMMxVTO0uXZimAx+NKYAMlGy6KepywA9927U7sbnYEgWE7ZlGZZbgaRSlhqlKkLX116bW6fxKhI+G088YTLsVTbWl3YA7FbDfYgG5BO97eF95YuH6TVHp/aLUkdtN+4hv8Ay6jsCdgL7d4GaiIee7cqzHDO/Y9BZfxFhawJRX26A03NupHZs02cFneWVW0JVUv/ACG6OPWm9m+k5AMqwNJ0sKgqurOq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1lph1YhQOzbWCugAjvW6nl63REmYefe1cWINmBuD4EG4PzEleKno1qz16W6VSKnI7M6q9WmSdiyuxuAT0HWb/HHAea5e7MFathb3WqouVHhVA90jx5H6CCy/M30dg7WoNUVm7usoRsWpgkcwdxfe0zVRHFFfRE9+PsROmGTD5nVsaauadAhiaas4ViKZ7raWBYuVCnfr0sLaWKrlhpCoLksCq6bA/hHim2179d9zeYOT5e51U8TQKk2757NxsCSVI5Dcaja+k+IvOZVlRxNakuH04h1LGrWa/ZoQQKZd2H3gsNQRdO2gHkZiLtPwxr2Y+vqYV6lh8ZUwwoU0uBV1sfE6AqqfTvn/AMh8p8q5Pnh95KjbW3a/nbc8rzvWScLYGhSSlTVmCjdjYlj1Y7czJhMjQ/wz8rTtERCPMv8Ah/NT/Ab/AG/3mROHs2/ySPl+09SUckwthejv+oTMcjwZ/hAf6j/aXCPL9HhzNTs1Jiv1Hp/aZqfB2cN/DPyP9p6dp5FgB+D/AHGbCZXgRyQf1/rJgeaaHs9zViNivlJSh7NMc1tTvpH4dW3p5CeiVw1AclUfATIABLgcHw/sl1G5Rj8W/aWCh7LUIUOgKjkHOoDyAYmwnWYgc9wXsywS2uKajwUftYCSdPg1KfuafhsfrLfECqVOH8QVKln0nmLqR8pV8V7I8gqNc0nU/kOgfJQBOpxA5hhPY3w6pBNNzb+aq3/qZf8AJ8qpYZFp07LTUWVFUKo9ABJCICIiAiIgIiIHxlBmF8Kh8ZniBotlw/mMx/8ATW8f6ySiBGnBVulphfAV/AH5SYiBAfZMSOSkekzU6OJtYlxf8xkzECNp4NvEz9nCP4mb8QIjEZHTqCzsbeAJlexPsn4QqXL0DqPNg7KT8jLxECj4X2S8FIb/AGbX+upVYfItaWjL8kyqgoSjQpUlHREVfjsOckIgfABPsRAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERA//Z" alt="Aston Martin AMR23 Diecast Model">
+                    <span class="model-team aston">Aston Martin</span>
+                </div>
+                <div class="model-info">
+                    <h3>Aston Martin AMR23</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Fernando Alonso · Lance Stroll</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-calendar"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 8 Podiums</span>
+                        <span><i class="fas fa-star"></i> Most Improved</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Alonso: P5 | Stroll: P12</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:14.213 (Alonso, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 199 <span style="color:#10b981;">↑7%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Alonso: 206 | Stroll: 74</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 79</span>
+                        <button class="preorder-btn" data-model="Aston Martin AMR23">Pre-Order →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 6: Alpine A523 -->
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD6l6mgvd8oSPjRSAN8ex6Ylo0B9IjzDzDBg&s" alt="Alpine A523 Diecast Model">
+                    <span class="model-team alpine">Alpine F1</span>
+                </div>
+                <div class="model-info">
+                    <h3>Alpine A523</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Pierre Gasly · Esteban Ocon</p>
+                    <div class="model-specs">
+                        <span><i class="fas fa-calendar"></i> 2023 Season</span>
+                        <span><i class="fas fa-trophy"></i> 2 Podiums</span>
+                        <span><i class="fas fa-flag-checkered"></i> Best Finish: P3</span>
+                    </div>
+                    <div class="model-data">
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Gasly: P7 | Ocon: DNF</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:14.856 (Gasly, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 169 <span style="color:#10b981;">↑5%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Gasly: 62 | Ocon: 58</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <span class="price-tag">RM 69</span>
+                        <button class="preorder-btn" data-model="Alpine A523">Pre-Order →</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Dashboard Demo -->
+<section class="dashboard-demo" id="dashboard">
+    <div class="container">
+        <div class="section-title light">
+            <h2>Live Demo · Digital Dashboard</h2>
+            <p>After scanning the QR code on your model, this is what you'll see (data powered by OpenF1 API)</p>
+        </div>
+        <div class="dashboard-card">
+            <div class="dash-header">
+                <div><i class="fas fa-car"></i> McLaren MCL60 Model #0447</div>
+                <div><span class="tag">QR Bound ✓</span></div>
+            </div>
+            <div class="dash-stats">
+                <div class="stat">
+                    <span class="stat-label">Last Race · Monaco GP</span>
+                    <span class="stat-value">Norris: P4 | Piastri: P8</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Best Lap (Norris)</span>
+                    <span class="stat-value">1:13.672</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Market Value</span>
+                    <span class="stat-value">RM 209 <span style="font-size:0.8rem;">↑15%</span></span>
+                </div>
+            </div>
+            <div class="premium-badge">
+                <i class="fas fa-chart-line"></i> Full Race History: Qualifying · Race Pace · Tyre Strategy · Head-to-Head Comparison
+            </div>
+        </div>
+        <div class="qr-simulator">
+            <p><i class="fas fa-mobile-alt"></i> Try the QR experience — click below to simulate scanning</p>
+            <button class="btn-secondary" id="simulateScanBtn"><i class="fas fa-qrcode"></i> Simulate QR Scan</button>
+            <div id="qrFeedback" class="qr-feedback" style="display: none;"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Waitlist Section -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-card">
+            <h3>Get Early Access</h3>
+            <p>First 500 units get exclusive launch pricing + free QR dashboard access</p>
+            <form id="waitlistForm">
+                <input type="email" placeholder="Your email address" id="waitlistEmail" required>
+                <button type="submit">Reserve Now →</button>
+            </form>
+            <div id="formMsg" style="margin-top: 12px;"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
 <footer>
     <div class="footer-content">
-        <div class="footer-logo"><i class="fas fa-tachometer-alt"></i> TurboTrace</div>
-        <div class="footer-links"><a href="index.html#product">Product</a><a href="index.html#models">Models</a><a href="dashboard.html">Dashboard</a></div>
-        <div class="footer-contact"><p><i class="fas fa-envelope"></i> hello@turbotrace.my</p><p><i class="fab fa-instagram"></i> @turbotrace</p></div>
+        <div class="footer-logo">
+            <i class="fas fa-tachometer-alt"></i> TurboTrace
+        </div>
+        <div class="footer-links">
+            <a href="#product">Product</a>
+            <a href="#models">Models</a>
+            <a href="#dashboard">Dashboard</a>
+        </div>
+        <div class="footer-contact">
+            <p><i class="fas fa-envelope"></i> hello@turbotrace.my</p>
+            <p><i class="fab fa-instagram"></i> @turbotrace</p>
+        </div>
     </div>
-    <div class="footer-bottom"><p>© 2025 TurboTrace · Registering with SSM Malaysia | Data via OpenF1 + Ergast APIs</p></div>
+    <div class="footer-bottom">
+        <p>© 2025 TurboTrace · Registering with SSM Malaysia | Data via OpenF1 + Ergast APIs</p>
+    </div>
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const homeBtn = document.getElementById('homeBtn');
-    const backToShopBtn = document.getElementById('backToShopBtn');
-    const purchaseBtn = document.getElementById('purchaseBtn');
-    const refreshBtn = document.getElementById('refreshDataBtn');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-
-    if(homeBtn) homeBtn.addEventListener('click', function() { window.location.href = 'index.html'; });
-    if(backToShopBtn) backToShopBtn.addEventListener('click', function() { window.location.href = 'index.html#models'; });
-    if(purchaseBtn) purchaseBtn.addEventListener('click', function() { window.location.href = 'index.html#contact'; });
-    
-    if(refreshBtn) {
-        refreshBtn.addEventListener('click', function() {
-            const originalText = refreshBtn.innerHTML;
-            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
-            setTimeout(function() {
-                refreshBtn.innerHTML = originalText;
-                alert('Live data refreshed! (Simulated - real API coming soon)');
-            }, 1500);
-        });
-    }
-
-    if(hamburger && navLinks) {
-        hamburger.addEventListener('click', function() {
-            if(navLinks.style.display === 'flex') navLinks.style.display = 'none';
-            else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '70px'; navLinks.style.left = '0'; navLinks.style.right = '0'; navLinks.style.background = 'white'; navLinks.style.padding = '24px'; navLinks.style.gap = '20px'; navLinks.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)'; }
-        });
-    }
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
