@@ -28,7 +28,6 @@
             padding: 0 24px;
         }
 
-        /* Navigation */
         nav {
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(8px);
@@ -100,7 +99,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             max-width: 1280px;
             margin: 60px auto 0;
@@ -222,7 +220,6 @@
             gap: 8px;
         }
 
-        /* Product Features */
         .product {
             padding: 80px 0;
         }
@@ -275,7 +272,6 @@
             color: #475569;
         }
 
-        /* Models Gallery */
         .models {
             padding: 80px 0;
             background: #f1f5f9;
@@ -283,7 +279,7 @@
 
         .models-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 32px;
             margin-top: 32px;
         }
@@ -303,7 +299,7 @@
 
         .model-image {
             position: relative;
-            height: 220px;
+            height: 200px;
             overflow: hidden;
         }
 
@@ -344,12 +340,6 @@
         .model-info h3 {
             font-size: 1.5rem;
             margin-bottom: 8px;
-        }
-
-        .model-driver {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
         }
 
         .model-specs {
@@ -427,7 +417,6 @@
             transform: scale(1.02);
         }
 
-        /* Dashboard Demo */
         .dashboard-demo {
             background: #0f172a;
             color: #f1f5f9;
@@ -511,7 +500,6 @@
             font-size: 0.9rem;
         }
 
-        /* Contact */
         .contact {
             padding: 60px 0;
         }
@@ -565,7 +553,6 @@
             background: #be123c;
         }
 
-        /* Footer */
         footer {
             background: #0f172a;
             color: #94a3b8;
@@ -623,51 +610,21 @@
             font-size: 0.8rem;
         }
 
-        /* Responsive */
         @media (max-width: 800px) {
-            .nav-links,
-            .cta-nav {
-                display: none;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-content p {
-                max-width: 100%;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .models-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .model-data {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-links {
-                justify-content: center;
-            }
+            .nav-links, .cta-nav { display: none; }
+            .hamburger { display: block; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { max-width: 100%; }
+            .features-grid { grid-template-columns: 1fr; }
+            .models-grid { grid-template-columns: 1fr; }
+            .model-data { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
     <div class="nav-container">
         <div class="logo">
@@ -687,12 +644,11 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
         <span class="badge"><i class="fas fa-microchip"></i> Phygital · Launching Malaysia</span>
         <h1>Your Diecast Model<br>That Tells Race Stories</h1>
-        <p>Every TurboTrace model contains a dynamic QR code that unlocks a personal dashboard — real-time lap times, race rankings, and market value trends. Physical collectibles x live race data.</p>
+        <p>Every TurboTrace model contains a dynamic QR code that unlocks a personal dashboard — real-time lap times, race rankings, and performance data. Physical collectibles x live race data.</p>
         <div class="hero-buttons">
             <button class="btn-primary" id="exploreModelsBtn">Explore Models →</button>
             <button class="btn-secondary" id="demoQrBtn">Try QR Demo ↓</button>
@@ -714,7 +670,6 @@
     </div>
 </section>
 
-<!-- Product Features -->
 <section class="product" id="product">
     <div class="container">
         <div class="section-title">
@@ -734,8 +689,8 @@
             </div>
             <div class="feature-card">
                 <i class="fas fa-chart-line"></i>
-                <h3>Market Value Trends</h3>
-                <p>Track estimated collection value based on community trading data.</p>
+                <h3>Performance Analytics</h3>
+                <p>Track lap time analysis, race pace, and performance trends for every model.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-chart-simple"></i>
@@ -751,7 +706,7 @@
     </div>
 </section>
 
-<!-- MODELS GALLERY - WITH IMAGES + RICH INFORMATION + PRICE RM150 -->
+<!-- MODELS GALLERY - ONLY CAR NAMES, NO DRIVER NAMES, NO MARKET VALUE -->
 <section class="models" id="models">
     <div class="container">
         <div class="section-title">
@@ -763,12 +718,11 @@
             <!-- Model 1: Ferrari SF-23 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/e11d48/white?text=Ferrari+SF-23%0A🏎️+Leclerc+%26+Sainz&font=montserrat" alt="Ferrari SF-23">
+                    <img src="https://placehold.co/600x300/e11d48/white?text=Ferrari+SF-23&font=montserrat" alt="Ferrari SF-23">
                     <span class="model-team ferrari">Scuderia Ferrari</span>
                 </div>
                 <div class="model-info">
                     <h3>Ferrari SF-23</h3>
-                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Charles Leclerc (#16) · Carlos Sainz (#55)</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 5 Podiums</span>
@@ -777,14 +731,10 @@
                         <span><i class="fas fa-engine"></i> Ferrari 066/10</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Leclerc: P3 | Sainz: P6</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.165 (Leclerc)</span></div>
-                        <div class="data-item"><span class="data-label">Market Value</span><span class="data-value">RM 229 ↑12%</span></div>
-                        <div class="data-item"><span class="data-label">Championship Pts</span><span class="data-value">Leclerc: 206 | Sainz: 200</span></div>
-                        <div class="data-item"><span class="data-label">Qualifying H2H</span><span class="data-value">Leclerc 15 - 7 Sainz</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Leclerc: P1 (5x) | Sainz: P2</span></div>
+                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P3 / P6</span></div>
+                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.165</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">406 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">Leclerc: 5 | Sainz: 2</span></div>
+                        <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">7</span></div>
                         <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
                         <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~350 km/h</span></div>
                     </div>
@@ -798,12 +748,11 @@
             <!-- Model 2: Red Bull RB19 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/1e3a5f/white?text=Red+Bull+RB19%0A🏆+Verstappen+%26+Perez&font=montserrat" alt="Red Bull RB19">
+                    <img src="https://placehold.co/600x300/1e3a5f/white?text=Red+Bull+RB19&font=montserrat" alt="Red Bull RB19">
                     <span class="model-team redbull">Oracle Red Bull Racing</span>
                 </div>
                 <div class="model-info">
                     <h3>Red Bull RB19</h3>
-                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Max Verstappen (#1) · Sergio Pérez (#11)</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 21 Wins</span>
@@ -812,14 +761,10 @@
                         <span><i class="fas fa-engine"></i> Honda RBPTH001</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Verstappen: P1 | Pérez: P16</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:12.945 (Verstappen)</span></div>
-                        <div class="data-item"><span class="data-label">Market Value</span><span class="data-value">RM 249 ↑18%</span></div>
-                        <div class="data-item"><span class="data-label">Championship Pts</span><span class="data-value">Verstappen: 575 | Pérez: 285</span></div>
-                        <div class="data-item"><span class="data-label">Qualifying H2H</span><span class="data-value">Verstappen 19 - 3 Pérez</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Verstappen: P1 (21x) | Pérez: P1 (2x)</span></div>
+                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P1 / P16</span></div>
+                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:12.945</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">860 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Wins Streak</span><span class="data-value">10 consecutive wins</span></div>
+                        <div class="data-item"><span class="data-label">Wins Streak</span><span class="data-value">10 consecutive</span></div>
                         <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
                         <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~355 km/h</span></div>
                     </div>
@@ -833,12 +778,11 @@
             <!-- Model 3: Mercedes W14 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/00afa0/white?text=Mercedes+W14%0A⭐+Hamilton+%26+Russell&font=montserrat" alt="Mercedes W14">
+                    <img src="https://placehold.co/600x300/00afa0/white?text=Mercedes+W14&font=montserrat" alt="Mercedes W14">
                     <span class="model-team mercedes">Mercedes-AMG</span>
                 </div>
                 <div class="model-info">
                     <h3>Mercedes W14</h3>
-                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Lewis Hamilton (#44) · George Russell (#63)</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 8 Podiums</span>
@@ -847,14 +791,10 @@
                         <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Hamilton: P2 | Russell: P10</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:13.882 (Hamilton)</span></div>
-                        <div class="data-item"><span class="data-label">Market Value</span><span class="data-value">RM 219 ↑9%</span></div>
-                        <div class="data-item"><span class="data-label">Championship Pts</span><span class="data-value">Hamilton: 234 | Russell: 175</span></div>
-                        <div class="data-item"><span class="data-label">Qualifying H2H</span><span class="data-value">Hamilton 13 - 9 Russell</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Hamilton: P2 (6x) | Russell: P2 (2x)</span></div>
+                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P2 / P10</span></div>
+                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:13.882</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">409 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">Hamilton: 1 | Russell: 0</span></div>
+                        <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">1</span></div>
                         <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
                         <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~348 km/h</span></div>
                     </div>
@@ -868,12 +808,11 @@
             <!-- Model 4: McLaren MCL60 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/ff8000/white?text=McLaren+MCL60%0A🧡+Norris+%26+Piastri&font=montserrat" alt="McLaren MCL60">
+                    <img src="https://placehold.co/600x300/ff8000/white?text=McLaren+MCL60&font=montserrat" alt="McLaren MCL60">
                     <span class="model-team mclaren">McLaren F1</span>
                 </div>
                 <div class="model-info">
                     <h3>McLaren MCL60</h3>
-                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Lando Norris (#4) · Oscar Piastri (#81)</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 9 Podiums</span>
@@ -882,14 +821,10 @@
                         <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Norris: P4 | Piastri: P8</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:13.672 (Norris)</span></div>
-                        <div class="data-item"><span class="data-label">Market Value</span><span class="data-value">RM 209 ↑15%</span></div>
-                        <div class="data-item"><span class="data-label">Championship Pts</span><span class="data-value">Norris: 205 | Piastri: 97</span></div>
-                        <div class="data-item"><span class="data-label">Qualifying H2H</span><span class="data-value">Norris 15 - 7 Piastri</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Norris: P2 (7x) | Piastri: P3 (2x)</span></div>
+                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P4 / P8</span></div>
+                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:13.672</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">302 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Rookie Season</span><span class="data-value">Piastri: Best Rookie</span></div>
+                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">P2</span></div>
                         <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
                         <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~350 km/h</span></div>
                     </div>
@@ -903,12 +838,11 @@
             <!-- Model 5: Aston Martin AMR23 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/006f62/white?text=Aston+Martin+AMR23%0A💚+Alonso+%26+Stroll&font=montserrat" alt="Aston Martin AMR23">
+                    <img src="https://placehold.co/600x300/006f62/white?text=Aston+Martin+AMR23&font=montserrat" alt="Aston Martin AMR23">
                     <span class="model-team aston">Aston Martin</span>
                 </div>
                 <div class="model-info">
                     <h3>Aston Martin AMR23</h3>
-                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Fernando Alonso (#14) · Lance Stroll (#18)</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 8 Podiums</span>
@@ -917,14 +851,10 @@
                         <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Alonso: P5 | Stroll: P12</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.213 (Alonso)</span></div>
-                        <div class="data-item"><span class="data-label">Market Value</span><span class="data-value">RM 199 ↑7%</span></div>
-                        <div class="data-item"><span class="data-label">Championship Pts</span><span class="data-value">Alonso: 206 | Stroll: 74</span></div>
-                        <div class="data-item"><span class="data-label">Qualifying H2H</span><span class="data-value">Alonso 18 - 4 Stroll</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Alonso: P2 (8x) | Stroll: P3</span></div>
+                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P5 / P12</span></div>
+                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.213</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">280 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Alonso's Age</span><span class="data-value">42 years old</span></div>
+                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">P2</span></div>
                         <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
                         <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~345 km/h</span></div>
                     </div>
@@ -938,12 +868,11 @@
             <!-- Model 6: Alpine A523 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/0090ff/white?text=Alpine+A523%0A💙+Gasly+%26+Ocon&font=montserrat" alt="Alpine A523">
+                    <img src="https://placehold.co/600x300/0090ff/white?text=Alpine+A523&font=montserrat" alt="Alpine A523">
                     <span class="model-team alpine">Alpine F1</span>
                 </div>
                 <div class="model-info">
                     <h3>Alpine A523</h3>
-                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Pierre Gasly (#10) · Esteban Ocon (#31)</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 2 Podiums</span>
@@ -952,14 +881,10 @@
                         <span><i class="fas fa-engine"></i> Renault E-Tech</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Gasly: P7 | Ocon: DNF</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.856 (Gasly)</span></div>
-                        <div class="data-item"><span class="data-label">Market Value</span><span class="data-value">RM 169 ↑5%</span></div>
-                        <div class="data-item"><span class="data-label">Championship Pts</span><span class="data-value">Gasly: 62 | Ocon: 58</span></div>
-                        <div class="data-item"><span class="data-label">Qualifying H2H</span><span class="data-value">Gasly 12 - 10 Ocon</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Gasly: P3 | Ocon: P3</span></div>
+                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P7 / DNF</span></div>
+                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.856</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">120 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">French Team</span><span class="data-value">Renault Power</span></div>
+                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">P3</span></div>
                         <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
                         <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~342 km/h</span></div>
                     </div>
@@ -973,7 +898,6 @@
     </div>
 </section>
 
-<!-- Dashboard Demo -->
 <section class="dashboard-demo" id="dashboard">
     <div class="container">
         <div class="section-title light">
@@ -988,15 +912,15 @@
             <div class="dash-stats">
                 <div class="stat">
                     <span class="stat-label">Last Race · Monaco GP</span>
-                    <span class="stat-value">Norris: P4 | Piastri: P8</span>
+                    <span class="stat-value">P4 / P8</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Best Lap (Norris)</span>
+                    <span class="stat-label">Best Lap</span>
                     <span class="stat-value">1:13.672</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Market Value</span>
-                    <span class="stat-value">RM 209 ↑15%</span>
+                    <span class="stat-label">Total Points</span>
+                    <span class="stat-value">302</span>
                 </div>
             </div>
             <div class="premium-badge">
@@ -1011,7 +935,6 @@
     </div>
 </section>
 
-<!-- Waitlist Section -->
 <section class="contact" id="contact">
     <div class="container">
         <div class="contact-card">
@@ -1026,7 +949,6 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
