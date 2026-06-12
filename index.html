@@ -283,7 +283,7 @@
 
         .models-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 32px;
             margin-top: 32px;
         }
@@ -303,7 +303,7 @@
 
         .model-image {
             position: relative;
-            height: 200px;
+            height: 220px;
             overflow: hidden;
         }
 
@@ -355,16 +355,16 @@
         .model-specs {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 20px;
-            font-size: 0.75rem;
-            color: #475569;
         }
 
         .model-specs span {
             background: #f1f5f9;
             padding: 4px 10px;
             border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
         }
 
         .model-specs i {
@@ -751,7 +751,7 @@
     </div>
 </section>
 
-<!-- MODELS GALLERY - ENHANCED WITH DETAILED INFO -->
+<!-- MODELS GALLERY - WITH IMAGES + RICH INFORMATION + PRICE RM150 -->
 <section class="models" id="models">
     <div class="container">
         <div class="section-title">
@@ -763,7 +763,7 @@
             <!-- Model 1: Ferrari SF-23 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/e11d48/white?text=Ferrari+SF-23&font=montserrat" alt="Ferrari SF-23">
+                    <img src="https://placehold.co/600x300/e11d48/white?text=Ferrari+SF-23%0A🏎️+Leclerc+%26+Sainz&font=montserrat" alt="Ferrari SF-23">
                     <span class="model-team ferrari">Scuderia Ferrari</span>
                 </div>
                 <div class="model-info">
@@ -774,6 +774,7 @@
                         <span><i class="fas fa-trophy"></i> 5 Podiums</span>
                         <span><i class="fas fa-flag-checkered"></i> 3 Fastest Laps</span>
                         <span><i class="fas fa-chart-line"></i> 3rd in WCC</span>
+                        <span><i class="fas fa-engine"></i> Ferrari 066/10</span>
                     </div>
                     <div class="model-data">
                         <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Leclerc: P3 | Sainz: P6</span></div>
@@ -784,9 +785,11 @@
                         <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Leclerc: P1 (5x) | Sainz: P2</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">406 (WCC)</span></div>
                         <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">Leclerc: 5 | Sainz: 2</span></div>
+                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
+                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~350 km/h</span></div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 89</span>
+                        <span class="price-tag">RM 150</span>
                         <button class="preorder-btn" data-model="Ferrari SF-23">Pre-Order →</button>
                     </div>
                 </div>
@@ -795,7 +798,7 @@
             <!-- Model 2: Red Bull RB19 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/1e3a5f/white?text=Red+Bull+RB19&font=montserrat" alt="Red Bull RB19">
+                    <img src="https://placehold.co/600x300/1e3a5f/white?text=Red+Bull+RB19%0A🏆+Verstappen+%26+Perez&font=montserrat" alt="Red Bull RB19">
                     <span class="model-team redbull">Oracle Red Bull Racing</span>
                 </div>
                 <div class="model-info">
@@ -806,6 +809,7 @@
                         <span><i class="fas fa-trophy"></i> 21 Wins</span>
                         <span><i class="fas fa-tachometer-alt"></i> Most Dominant</span>
                         <span><i class="fas fa-chart-line"></i> 1st in WCC</span>
+                        <span><i class="fas fa-engine"></i> Honda RBPTH001</span>
                     </div>
                     <div class="model-data">
                         <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Verstappen: P1 | Pérez: P16</span></div>
@@ -816,9 +820,11 @@
                         <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Verstappen: P1 (21x) | Pérez: P1 (2x)</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">860 (WCC)</span></div>
                         <div class="data-item"><span class="data-label">Wins Streak</span><span class="data-value">10 consecutive wins</span></div>
+                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
+                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~355 km/h</span></div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 99</span>
+                        <span class="price-tag">RM 150</span>
                         <button class="preorder-btn" data-model="Red Bull RB19">Pre-Order →</button>
                     </div>
                 </div>
@@ -827,7 +833,7 @@
             <!-- Model 3: Mercedes W14 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/00afa0/white?text=Mercedes+W14&font=montserrat" alt="Mercedes W14">
+                    <img src="https://placehold.co/600x300/00afa0/white?text=Mercedes+W14%0A⭐+Hamilton+%26+Russell&font=montserrat" alt="Mercedes W14">
                     <span class="model-team mercedes">Mercedes-AMG</span>
                 </div>
                 <div class="model-info">
@@ -838,6 +844,7 @@
                         <span><i class="fas fa-trophy"></i> 8 Podiums</span>
                         <span><i class="fas fa-chart-line"></i> 2nd in WCC</span>
                         <span><i class="fas fa-rocket"></i> Best Comeback</span>
+                        <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
                         <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Hamilton: P2 | Russell: P10</span></div>
@@ -848,9 +855,11 @@
                         <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Hamilton: P2 (6x) | Russell: P2 (2x)</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">409 (WCC)</span></div>
                         <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">Hamilton: 1 | Russell: 0</span></div>
+                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
+                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~348 km/h</span></div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 89</span>
+                        <span class="price-tag">RM 150</span>
                         <button class="preorder-btn" data-model="Mercedes W14">Pre-Order →</button>
                     </div>
                 </div>
@@ -859,7 +868,7 @@
             <!-- Model 4: McLaren MCL60 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/ff8000/white?text=McLaren+MCL60&font=montserrat" alt="McLaren MCL60">
+                    <img src="https://placehold.co/600x300/ff8000/white?text=McLaren+MCL60%0A🧡+Norris+%26+Piastri&font=montserrat" alt="McLaren MCL60">
                     <span class="model-team mclaren">McLaren F1</span>
                 </div>
                 <div class="model-info">
@@ -870,6 +879,7 @@
                         <span><i class="fas fa-trophy"></i> 9 Podiums</span>
                         <span><i class="fas fa-rocket"></i> Best Comeback</span>
                         <span><i class="fas fa-chart-line"></i> 4th in WCC</span>
+                        <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
                         <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Norris: P4 | Piastri: P8</span></div>
@@ -880,9 +890,11 @@
                         <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Norris: P2 (7x) | Piastri: P3 (2x)</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">302 (WCC)</span></div>
                         <div class="data-item"><span class="data-label">Rookie Season</span><span class="data-value">Piastri: Best Rookie</span></div>
+                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
+                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~350 km/h</span></div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 79</span>
+                        <span class="price-tag">RM 150</span>
                         <button class="preorder-btn" data-model="McLaren MCL60">Pre-Order →</button>
                     </div>
                 </div>
@@ -891,7 +903,7 @@
             <!-- Model 5: Aston Martin AMR23 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/006f62/white?text=Aston+Martin+AMR23&font=montserrat" alt="Aston Martin AMR23">
+                    <img src="https://placehold.co/600x300/006f62/white?text=Aston+Martin+AMR23%0A💚+Alonso+%26+Stroll&font=montserrat" alt="Aston Martin AMR23">
                     <span class="model-team aston">Aston Martin</span>
                 </div>
                 <div class="model-info">
@@ -902,6 +914,7 @@
                         <span><i class="fas fa-trophy"></i> 8 Podiums</span>
                         <span><i class="fas fa-star"></i> Most Improved</span>
                         <span><i class="fas fa-chart-line"></i> 5th in WCC</span>
+                        <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
                         <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Alonso: P5 | Stroll: P12</span></div>
@@ -912,9 +925,11 @@
                         <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Alonso: P2 (8x) | Stroll: P3</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">280 (WCC)</span></div>
                         <div class="data-item"><span class="data-label">Alonso's Age</span><span class="data-value">42 years old</span></div>
+                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
+                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~345 km/h</span></div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 79</span>
+                        <span class="price-tag">RM 150</span>
                         <button class="preorder-btn" data-model="Aston Martin AMR23">Pre-Order →</button>
                     </div>
                 </div>
@@ -923,7 +938,7 @@
             <!-- Model 6: Alpine A523 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="https://placehold.co/600x300/0090ff/white?text=Alpine+A523&font=montserrat" alt="Alpine A523">
+                    <img src="https://placehold.co/600x300/0090ff/white?text=Alpine+A523%0A💙+Gasly+%26+Ocon&font=montserrat" alt="Alpine A523">
                     <span class="model-team alpine">Alpine F1</span>
                 </div>
                 <div class="model-info">
@@ -934,6 +949,7 @@
                         <span><i class="fas fa-trophy"></i> 2 Podiums</span>
                         <span><i class="fas fa-flag-checkered"></i> Best: P3</span>
                         <span><i class="fas fa-chart-line"></i> 6th in WCC</span>
+                        <span><i class="fas fa-engine"></i> Renault E-Tech</span>
                     </div>
                     <div class="model-data">
                         <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">Gasly: P7 | Ocon: DNF</span></div>
@@ -944,9 +960,11 @@
                         <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">Gasly: P3 | Ocon: P3</span></div>
                         <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">120 (WCC)</span></div>
                         <div class="data-item"><span class="data-label">French Team</span><span class="data-value">Renault Power</span></div>
+                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
+                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~342 km/h</span></div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 69</span>
+                        <span class="price-tag">RM 150</span>
                         <button class="preorder-btn" data-model="Alpine A523">Pre-Order →</button>
                     </div>
                 </div>
@@ -1031,7 +1049,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
     const simulateScan = document.getElementById('simulateScanBtn');
     const demoQrBtn = document.getElementById('demoQrBtn');
     const exploreModelsBtn = document.getElementById('exploreModelsBtn');
@@ -1043,26 +1060,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const preorderBtns = document.querySelectorAll('.preorder-btn');
     const qrFeedback = document.getElementById('qrFeedback');
 
-    // Scroll to Models
     if (exploreModelsBtn) {
         exploreModelsBtn.addEventListener('click', function() {
             document.getElementById('models').scrollIntoView({ behavior: 'smooth' });
         });
     }
 
-    // Reserve Nav Button - Scroll to contact
     if (reserveNavBtn) {
         reserveNavBtn.addEventListener('click', function() {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         });
     }
 
-    // Pre-order Buttons - scroll to contact
     preorderBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             if (formMsg) {
-                formMsg.innerHTML = '✨ Interested in this model! Fill in your email to reserve.';
+                formMsg.innerHTML = '✨ Interested! Fill in your email to reserve.';
                 formMsg.style.color = '#e11d48';
                 setTimeout(function() {
                     if (formMsg) formMsg.innerHTML = '';
@@ -1071,7 +1085,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // QR Simulation - Show feedback
     function simulateQRScan() {
         if (qrFeedback) {
             qrFeedback.style.display = 'block';
@@ -1099,14 +1112,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Waitlist Form
     if (waitlistForm) {
         waitlistForm.addEventListener('submit', function(e) {
             e.preventDefault();
             var email = document.getElementById('waitlistEmail').value;
             
             if (email && email.includes('@')) {
-                formMsg.innerHTML = '✓ Reserved successfully! We\'ll notify you at launch with exclusive pricing.';
+                formMsg.innerHTML = '✓ Reserved successfully! We\'ll notify you at launch.';
                 formMsg.style.color = '#10b981';
                 waitlistForm.reset();
             } else {
@@ -1116,7 +1128,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile Menu Toggle
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', function() {
             if (navLinks.style.display === 'flex') {
