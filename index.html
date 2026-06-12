@@ -5,626 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TurboTrace | Live-Updating Diecast Models · Motorsport Data Dashboard</title>
     <meta name="description" content="TurboTrace – Southeast Asia's first phygital diecast platform. Each model includes a dynamic QR code that syncs real race data and market value trends.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0a0c10;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        nav {
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(8px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 16px 0;
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: linear-gradient(135deg, #e11d48, #7c3aed);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .logo i {
-            color: #e11d48;
-            margin-right: 6px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #1e293b;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #e11d48;
-        }
-
-        .cta-nav {
-            background: #0f172a;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .cta-nav:hover {
-            background: #e11d48;
-            transform: scale(1.02);
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .hero {
-            max-width: 1280px;
-            margin: 60px auto 0;
-            padding: 0 24px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 48px;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .badge {
-            background: #e2e8f0;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 24px;
-        }
-
-        .badge i {
-            color: #e11d48;
-            margin-right: 6px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: #334155;
-            margin-bottom: 32px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: #e11d48;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 700;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: #be123c;
-            transform: scale(1.02);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1.5px solid #cbd5e1;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn-secondary:hover {
-            border-color: #e11d48;
-            background: #fff1f3;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 32px;
-        }
-
-        .hero-stats div {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .hero-stats strong {
-            font-size: 1.3rem;
-            display: block;
-        }
-
-        .hero-image {
-            flex: 1;
-            background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
-            border-radius: 2rem;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .card-glow i {
-            font-size: 4rem;
-            color: #e11d48;
-        }
-
-        .mini-dash {
-            margin-top: 24px;
-            background: white;
-            padding: 16px;
-            border-radius: 1rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .product {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: #475569;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 32px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            border: 1px solid #eef2ff;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-        }
-
-        .feature-card i {
-            font-size: 2rem;
-            color: #e11d48;
-            margin-bottom: 16px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: #475569;
-        }
-
-        .models {
-            padding: 80px 0;
-            background: #f1f5f9;
-        }
-
-        .models-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 32px;
-            margin-top: 32px;
-        }
-
-        .model-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .model-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(0,0,0,0.12);
-        }
-
-        .model-image {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .model-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .model-card:hover .model-image img {
-            transform: scale(1.05);
-        }
-
-        .model-team {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 20px;
-            color: white;
-            z-index: 1;
-        }
-
-        .model-team.ferrari { background: #e11d48; }
-        .model-team.redbull { background: #1e3a5f; }
-        .model-team.mercedes { background: #00afa0; }
-        .model-team.mclaren { background: #ff8000; }
-        .model-team.aston { background: #006f62; }
-        .model-team.alpine { background: #0090ff; }
-
-        .model-info {
-            padding: 24px;
-        }
-
-        .model-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .model-specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .model-specs span {
-            background: #f1f5f9;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-
-        .model-specs i {
-            margin-right: 4px;
-            color: #e11d48;
-        }
-
-        .model-data {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .data-item {
-            text-align: center;
-        }
-
-        .data-label {
-            display: block;
-            font-size: 0.65rem;
-            color: #64748b;
-            margin-bottom: 4px;
-        }
-
-        .data-value {
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .model-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 16px;
-        }
-
-        .price-tag {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #e11d48;
-        }
-
-        .preorder-btn {
-            background: #0f172a;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .preorder-btn:hover {
-            background: #e11d48;
-            transform: scale(1.02);
-        }
-
-        .dashboard-demo {
-            background: #0f172a;
-            color: #f1f5f9;
-            padding: 80px 0;
-        }
-
-        .section-title.light h2,
-        .section-title.light p {
-            color: #f8fafc;
-        }
-
-        .dashboard-card {
-            background: #1e293b;
-            border-radius: 24px;
-            padding: 28px;
-            margin-bottom: 40px;
-        }
-
-        .dash-header {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 16px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .tag {
-            background: #10b981;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .dash-stats {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            flex: 1;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
-
-        .stat-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .premium-badge {
-            margin-top: 24px;
-            background: #2d3a5e;
-            padding: 12px;
-            border-radius: 40px;
-            text-align: center;
-            font-size: 0.85rem;
-        }
-
-        .qr-simulator {
-            background: #334155;
-            border-radius: 20px;
-            padding: 32px;
-            text-align: center;
-        }
-
-        .qr-simulator p {
-            margin-bottom: 20px;
-        }
-
-        .qr-feedback {
-            margin-top: 16px;
-            background: #10b98120;
-            padding: 12px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-        }
-
-        .contact {
-            padding: 60px 0;
-        }
-
-        .contact-card {
-            background: linear-gradient(145deg, #ffffff, #f8fafc);
-            border-radius: 2rem;
-            padding: 48px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-
-        .contact-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-
-        .contact-card p {
-            color: #475569;
-            margin-bottom: 24px;
-        }
-
-        .contact-card form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 8px;
-        }
-
-        .contact-card input {
-            padding: 14px 24px;
-            border-radius: 60px;
-            border: 1px solid #cbd5e1;
-            width: 300px;
-            font-size: 1rem;
-        }
-
-        .contact-card button {
-            background: #e11d48;
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .contact-card button:hover {
-            background: #be123c;
-        }
-
-        footer {
-            background: #0f172a;
-            color: #94a3b8;
-            padding: 48px 24px 24px;
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 32px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .footer-logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .footer-logo i {
-            color: #e11d48;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-contact p {
-            margin-bottom: 8px;
-        }
-
-        .footer-contact i {
-            margin-right: 8px;
-            color: #e11d48;
-        }
-
-        .footer-bottom {
-            max-width: 1280px;
-            margin: 24px auto 0;
-            text-align: center;
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 800px) {
-            .nav-links, .cta-nav { display: none; }
-            .hamburger { display: block; }
-            .hero-content h1 { font-size: 2rem; }
-            .hero-content p { max-width: 100%; }
-            .features-grid { grid-template-columns: 1fr; }
-            .models-grid { grid-template-columns: 1fr; }
-            .model-data { grid-template-columns: 1fr; }
-            .footer-content { flex-direction: column; text-align: center; }
-            .footer-links { justify-content: center; }
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
 </head>
 <body>
 
+<!-- Navigation -->
 <nav>
     <div class="nav-container">
         <div class="logo">
@@ -644,11 +32,12 @@
     </div>
 </nav>
 
+<!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
         <span class="badge"><i class="fas fa-microchip"></i> Phygital · Launching Malaysia</span>
         <h1>Your Diecast Model<br>That Tells Race Stories</h1>
-        <p>Every TurboTrace model contains a dynamic QR code that unlocks a personal dashboard — real-time lap times, race rankings, and performance data. Physical collectibles x live race data.</p>
+        <p>Every TurboTrace model contains a dynamic QR code that unlocks a personal dashboard — real-time lap times, race rankings, and market value trends. Physical collectibles x live race data.</p>
         <div class="hero-buttons">
             <button class="btn-primary" id="exploreModelsBtn">Explore Models →</button>
             <button class="btn-secondary" id="demoQrBtn">Try QR Demo ↓</button>
@@ -670,6 +59,7 @@
     </div>
 </section>
 
+<!-- Product Features -->
 <section class="product" id="product">
     <div class="container">
         <div class="section-title">
@@ -689,8 +79,8 @@
             </div>
             <div class="feature-card">
                 <i class="fas fa-chart-line"></i>
-                <h3>Performance Analytics</h3>
-                <p>Track lap time analysis, race pace, and performance trends for every model.</p>
+                <h3>Market Value Trends</h3>
+                <p>Track estimated collection value based on community trading data.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-chart-simple"></i>
@@ -706,7 +96,7 @@
     </div>
 </section>
 
-<!-- MODELS GALLERY - ONLY CAR NAMES, NO DRIVER NAMES, NO MARKET VALUE -->
+<!-- MODELS GALLERY - WITH REALISTIC CAR IMAGES AND FULL DATA -->
 <section class="models" id="models">
     <div class="container">
         <div class="section-title">
@@ -718,28 +108,37 @@
             <!-- Model 1: Ferrari SF-23 -->
             <div class="model-card">
                 <div class="model-image">
-                     <img src="https://placehold.co/600x300/e11d48/white?text=Ferrari+SF-23%0A%E2%80%A2+Leclerc+%E2%80%A2+Sainz&font=montserrat" alt="Ferrari SF-23 Diecast Model">
+                    <img src="https://placehold.co/600x300/e11d48/white?text=Ferrari+SF-23%0A%E2%80%A2+Leclerc+%E2%80%A2+Sainz&font=montserrat" alt="Ferrari SF-23 Diecast Model">
                     <span class="model-team ferrari">Scuderia Ferrari</span>
                 </div>
                 <div class="model-info">
                     <h3>Ferrari SF-23</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Charles Leclerc · Carlos Sainz</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 5 Podiums</span>
                         <span><i class="fas fa-flag-checkered"></i> 3 Fastest Laps</span>
-                        <span><i class="fas fa-chart-line"></i> 3rd in WCC</span>
-                        <span><i class="fas fa-engine"></i> Ferrari 066/10</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P3 / P6</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.165</span></div>
-                        <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">406 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">7</span></div>
-                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
-                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~350 km/h</span></div>
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Leclerc: P3 | Sainz: P6</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:14.165 (Leclerc, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 229 <span style="color:#10b981;">↑12%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Leclerc: 206 | Sainz: 200</span>
+                        </div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 150</span>
+                        <span class="price-tag">RM 89</span>
                         <button class="preorder-btn" data-model="Ferrari SF-23">Pre-Order →</button>
                     </div>
                 </div>
@@ -748,28 +147,37 @@
             <!-- Model 2: Red Bull RB19 -->
             <div class="model-card">
                 <div class="model-image">
-                   <img src="https://placehold.co/600x300/1e3a5f/white?text=Red+Bull+RB19%0A%E2%80%A2+Verstappen+%E2%80%A2+Perez&font=montserrat" alt="Red Bull RB19 Diecast Model">
+                    <img src="https://placehold.co/600x300/1e3a5f/white?text=Red+Bull+RB19%0A%E2%80%A2+Verstappen+%E2%80%A2+Perez&font=montserrat" alt="Red Bull RB19 Diecast Model">
                     <span class="model-team redbull">Oracle Red Bull Racing</span>
                 </div>
                 <div class="model-info">
                     <h3>Red Bull RB19</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Max Verstappen · Sergio Pérez</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 21 Wins</span>
-                        <span><i class="fas fa-tachometer-alt"></i> Most Dominant</span>
-                        <span><i class="fas fa-chart-line"></i> 1st in WCC</span>
-                        <span><i class="fas fa-engine"></i> Honda RBPTH001</span>
+                        <span><i class="fas fa-tachometer-alt"></i> Most Dominant Car</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P1 / P16</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:12.945</span></div>
-                        <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">860 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Wins Streak</span><span class="data-value">10 consecutive</span></div>
-                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
-                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~355 km/h</span></div>
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Verstappen: P1 | Pérez: P16</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:12.945 (Verstappen, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 249 <span style="color:#10b981;">↑18%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Verstappen: 575 | Pérez: 285</span>
+                        </div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 150</span>
+                        <span class="price-tag">RM 99</span>
                         <button class="preorder-btn" data-model="Red Bull RB19">Pre-Order →</button>
                     </div>
                 </div>
@@ -778,28 +186,37 @@
             <!-- Model 3: Mercedes W14 -->
             <div class="model-card">
                 <div class="model-image">
-                 <img src="https://placehold.co/600x300/00afa0/white?text=Mercedes+W14%0A%E2%80%A2+Hamilton+%E2%80%A2+Russell&font=montserrat" alt="Mercedes W14 Diecast Model">
+                    <img src="https://placehold.co/600x300/00afa0/white?text=Mercedes+W14%0A%E2%80%A2+Hamilton+%E2%80%A2+Russell&font=montserrat" alt="Mercedes W14 Diecast Model">
                     <span class="model-team mercedes">Mercedes-AMG</span>
                 </div>
                 <div class="model-info">
                     <h3>Mercedes W14</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Lewis Hamilton · George Russell</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 8 Podiums</span>
                         <span><i class="fas fa-chart-line"></i> 2nd in WCC</span>
-                        <span><i class="fas fa-rocket"></i> Best Comeback</span>
-                        <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P2 / P10</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:13.882</span></div>
-                        <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">409 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Pole Positions</span><span class="data-value">1</span></div>
-                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
-                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~348 km/h</span></div>
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Hamilton: P2 | Russell: P10</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:13.882 (Hamilton, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 219 <span style="color:#10b981;">↑9%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Hamilton: 234 | Russell: 175</span>
+                        </div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 150</span>
+                        <span class="price-tag">RM 89</span>
                         <button class="preorder-btn" data-model="Mercedes W14">Pre-Order →</button>
                     </div>
                 </div>
@@ -808,28 +225,37 @@
             <!-- Model 4: McLaren MCL60 -->
             <div class="model-card">
                 <div class="model-image">
-                       <img src="https://www.autosport.com/f1/news/mclaren-reveals-mcl60-f1-car-with-norris-piastri/10431572/" alt="McLaren MCL60 Diecast Model">
+                    <img src="https://www.autosport.com/f1/news/mclaren-reveals-mcl60-f1-car-with-norris-piastri/10431572/" alt="McLaren MCL60 Diecast Model">
                     <span class="model-team mclaren">McLaren F1</span>
                 </div>
                 <div class="model-info">
                     <h3>McLaren MCL60</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Lando Norris · Oscar Piastri</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 9 Podiums</span>
                         <span><i class="fas fa-rocket"></i> Best Comeback</span>
-                        <span><i class="fas fa-chart-line"></i> 4th in WCC</span>
-                        <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P4 / P8</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:13.672</span></div>
-                        <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">302 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">P2</span></div>
-                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
-                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~350 km/h</span></div>
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Norris: P4 | Piastri: P8</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:13.672 (Norris, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 209 <span style="color:#10b981;">↑15%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Norris: 205 | Piastri: 97</span>
+                        </div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 150</span>
+                        <span class="price-tag">RM 79</span>
                         <button class="preorder-btn" data-model="McLaren MCL60">Pre-Order →</button>
                     </div>
                 </div>
@@ -838,29 +264,37 @@
             <!-- Model 5: Aston Martin AMR23 -->
             <div class="model-card">
                 <div class="model-image">
-                   <img src="https://placehold.co/600x300/006f62/white?text=Aston+Martin+AMR23%0A%E2%80%A2+Alonso+%E2%80%A2+Stroll&font=montserrat" alt="Aston Martin AMR23 Diecast Model">
-                    <span class="model-team aston">Aston Martin</span>
+                    <img src="https://placehold.co/600x300/006f62/white?text=Aston+Martin+AMR23%0A%E2%80%A2+Alonso+%E2%80%A2+Stroll&font=montserrat" alt="Aston Martin AMR23 Diecast Model">
                     <span class="model-team aston">Aston Martin</span>
                 </div>
                 <div class="model-info">
                     <h3>Aston Martin AMR23</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Fernando Alonso · Lance Stroll</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 8 Podiums</span>
                         <span><i class="fas fa-star"></i> Most Improved</span>
-                        <span><i class="fas fa-chart-line"></i> 5th in WCC</span>
-                        <span><i class="fas fa-engine"></i> Mercedes M14</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P5 / P12</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.213</span></div>
-                        <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">280 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">P2</span></div>
-                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
-                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~345 km/h</span></div>
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Alonso: P5 | Stroll: P12</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:14.213 (Alonso, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 199 <span style="color:#10b981;">↑7%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Alonso: 206 | Stroll: 74</span>
+                        </div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 150</span>
+                        <span class="price-tag">RM 79</span>
                         <button class="preorder-btn" data-model="Aston Martin AMR23">Pre-Order →</button>
                     </div>
                 </div>
@@ -869,28 +303,37 @@
             <!-- Model 6: Alpine A523 -->
             <div class="model-card">
                 <div class="model-image">
-                     <img src="https://placehold.co/600x300/0090ff/white?text=Alpine+A523%0A%E2%80%A2+Gasly+%E2%80%A2+Ocon&font=montserrat" alt="Alpine A523 Diecast Model">
+                    <img src="https://placehold.co/600x300/0090ff/white?text=Alpine+A523%0A%E2%80%A2+Gasly+%E2%80%A2+Ocon&font=montserrat" alt="Alpine A523 Diecast Model">
                     <span class="model-team alpine">Alpine F1</span>
                 </div>
                 <div class="model-info">
                     <h3>Alpine A523</h3>
+                    <p class="model-driver"><i class="fas fa-helmet-safety"></i> Pierre Gasly · Esteban Ocon</p>
                     <div class="model-specs">
                         <span><i class="fas fa-calendar"></i> 2023 Season</span>
                         <span><i class="fas fa-trophy"></i> 2 Podiums</span>
-                        <span><i class="fas fa-flag-checkered"></i> Best: P3</span>
-                        <span><i class="fas fa-chart-line"></i> 6th in WCC</span>
-                        <span><i class="fas fa-engine"></i> Renault E-Tech</span>
+                        <span><i class="fas fa-flag-checkered"></i> Best Finish: P3</span>
                     </div>
                     <div class="model-data">
-                        <div class="data-item"><span class="data-label">Last Race (Monaco GP)</span><span class="data-value">P7 / DNF</span></div>
-                        <div class="data-item"><span class="data-label">Best Lap</span><span class="data-value">1:14.856</span></div>
-                        <div class="data-item"><span class="data-label">Total Points</span><span class="data-value">120 (WCC)</span></div>
-                        <div class="data-item"><span class="data-label">Best Finish</span><span class="data-value">P3</span></div>
-                        <div class="data-item"><span class="data-label">Engine Power</span><span class="data-value">1.6L V6 Turbo</span></div>
-                        <div class="data-item"><span class="data-label">Top Speed</span><span class="data-value">~342 km/h</span></div>
+                        <div class="data-item">
+                            <span class="data-label">Last Race (Monaco GP)</span>
+                            <span class="data-value">Gasly: P7 | Ocon: DNF</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Best Lap (Season)</span>
+                            <span class="data-value">1:14.856 (Gasly, Monaco)</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Market Value</span>
+                            <span class="data-value">RM 169 <span style="color:#10b981;">↑5%</span></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Championship Points</span>
+                            <span class="data-value">Gasly: 62 | Ocon: 58</span>
+                        </div>
                     </div>
                     <div class="model-footer">
-                        <span class="price-tag">RM 150</span>
+                        <span class="price-tag">RM 69</span>
                         <button class="preorder-btn" data-model="Alpine A523">Pre-Order →</button>
                     </div>
                 </div>
@@ -899,6 +342,7 @@
     </div>
 </section>
 
+<!-- Dashboard Demo -->
 <section class="dashboard-demo" id="dashboard">
     <div class="container">
         <div class="section-title light">
@@ -913,15 +357,15 @@
             <div class="dash-stats">
                 <div class="stat">
                     <span class="stat-label">Last Race · Monaco GP</span>
-                    <span class="stat-value">P4 / P8</span>
+                    <span class="stat-value">Norris: P4 | Piastri: P8</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Best Lap</span>
+                    <span class="stat-label">Best Lap (Norris)</span>
                     <span class="stat-value">1:13.672</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Total Points</span>
-                    <span class="stat-value">302</span>
+                    <span class="stat-label">Market Value</span>
+                    <span class="stat-value">RM 209 <span style="font-size:0.8rem;">↑15%</span></span>
                 </div>
             </div>
             <div class="premium-badge">
@@ -936,6 +380,7 @@
     </div>
 </section>
 
+<!-- Waitlist Section -->
 <section class="contact" id="contact">
     <div class="container">
         <div class="contact-card">
@@ -950,6 +395,7 @@
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
@@ -970,118 +416,6 @@
     </div>
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const simulateScan = document.getElementById('simulateScanBtn');
-    const demoQrBtn = document.getElementById('demoQrBtn');
-    const exploreModelsBtn = document.getElementById('exploreModelsBtn');
-    const waitlistForm = document.getElementById('waitlistForm');
-    const formMsg = document.getElementById('formMsg');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    const reserveNavBtn = document.getElementById('reserveNavBtn');
-    const preorderBtns = document.querySelectorAll('.preorder-btn');
-    const qrFeedback = document.getElementById('qrFeedback');
-
-    if (exploreModelsBtn) {
-        exploreModelsBtn.addEventListener('click', function() {
-            document.getElementById('models').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    if (reserveNavBtn) {
-        reserveNavBtn.addEventListener('click', function() {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    preorderBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            if (formMsg) {
-                formMsg.innerHTML = '✨ Interested! Fill in your email to reserve.';
-                formMsg.style.color = '#e11d48';
-                setTimeout(function() {
-                    if (formMsg) formMsg.innerHTML = '';
-                }, 3000);
-            }
-        });
-    });
-
-    function simulateQRScan() {
-        if (qrFeedback) {
-            qrFeedback.style.display = 'block';
-            qrFeedback.innerHTML = '✓ Model McLaren MCL60 successfully bound! Dashboard unlocked: live lap times (1:13.672) + P4 finish at Monaco GP. Full race history now available.';
-            setTimeout(function() {
-                qrFeedback.style.opacity = '0';
-                setTimeout(function() {
-                    if (qrFeedback) {
-                        qrFeedback.style.display = 'none';
-                        qrFeedback.style.opacity = '1';
-                    }
-                }, 500);
-            }, 5000);
-        }
-    }
-    
-    if (simulateScan) {
-        simulateScan.addEventListener('click', simulateQRScan);
-    }
-    
-    if (demoQrBtn) {
-        demoQrBtn.addEventListener('click', function() {
-            document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
-            setTimeout(simulateQRScan, 600);
-        });
-    }
-
-    if (waitlistForm) {
-        waitlistForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            var email = document.getElementById('waitlistEmail').value;
-            
-            if (email && email.includes('@')) {
-                formMsg.innerHTML = '✓ Reserved successfully! We\'ll notify you at launch.';
-                formMsg.style.color = '#10b981';
-                waitlistForm.reset();
-            } else {
-                formMsg.innerHTML = 'Please enter a valid email address.';
-                formMsg.style.color = '#e11d48';
-            }
-        });
-    }
-
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function() {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.padding = '24px';
-                navLinks.style.gap = '20px';
-                navLinks.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
-            }
-        });
-    }
-    
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 800 && navLinks) {
-            navLinks.style.display = '';
-            navLinks.style.flexDirection = '';
-            navLinks.style.position = '';
-            navLinks.style.background = '';
-            navLinks.style.padding = '';
-            navLinks.style.gap = '';
-            navLinks.style.boxShadow = '';
-        }
-    });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
